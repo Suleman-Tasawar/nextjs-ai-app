@@ -4,20 +4,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-interface IAppProps {
-  data: {
-    Id: string;
-    Title: string;
-    Content: string;
-    ImageUrl: string;
-    AutherId: string;
-    AutherName: string;
-    AutherImage: string;
-    CreatedAt: Date;
-    UpdatedAt: Date;
-  };
-}
-
 async function getData(userId: string) {
   const blogData = await prisma.blogPost.findMany({
     where: {
@@ -30,10 +16,10 @@ async function getData(userId: string) {
   return blogData;
 }
 
-const DashboardRoute = async ({ data }: IAppProps) => {
+const DashboardRoute = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const myBlogData = await getData(user.id);
+  const myBlogData = await getData(user?.id);
 
   return (
     <div>
