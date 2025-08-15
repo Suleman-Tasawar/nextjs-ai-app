@@ -1,4 +1,4 @@
-import BlogCard from "./components/BlogCard";
+import BlogCard from "../components/general/BlogCard";
 import { prisma } from "@/lib/prisma";
 
 async function getData() {

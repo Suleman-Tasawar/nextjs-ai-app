@@ -1,5 +1,6 @@
 import Link from "next/link";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../../components/general/BlogCard";
+import { redirect } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -19,7 +20,11 @@ async function getData(userId: string) {
 const DashboardRoute = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const myBlogData = await getData(user?.id);
+
+  if (!user || !user.id) {
+    redirect("/api/auth/login");
+  }
+  const myBlogData = await getData(user.id);
 
   return (
     <div>

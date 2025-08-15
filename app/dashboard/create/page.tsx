@@ -1,10 +1,9 @@
 import { handleSubmission } from "@/app/action";
-import { Button } from "@/components/ui/button";
 import { Card ,CardHeader,CardTitle,CardDescription,CardContent} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import SubmitButton from "@/app/components/SubmitButton";
+import SubmitButton from "@/components/general/SubmitButton";
 export default async function CreateBlogRoute(){
     return (
         <div>

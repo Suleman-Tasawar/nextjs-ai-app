@@ -8,11 +8,11 @@ interface IAppProps {
     Title: string;
     Content: string;
     ImageUrl: string;
-    AutherId: string;
+    AutherId?: string;
     AutherName: string;
     AutherImage: string;
-    CreatedAt: Date;
-    UpdatedAt: Date;
+    CreatedAt?: Date;
+    UpdatedAt?: Date;
   };
 }
 
